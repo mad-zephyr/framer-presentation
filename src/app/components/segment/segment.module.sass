@@ -1,0 +1,51 @@
+@use '../../styles/' as *
+
+.section
+  position: relative
+  display: flex
+  align-items: center
+  border-radius: 12px 
+  height: 40px
+
+.wrapper
+  position: absolute
+  width: 100%
+  height: calc( 100% - 2px)
+  border: 2px solid $color-dark3
+  border-radius: inherit
+  z-index: -1
+
+.segment
+  position: relative
+  display: flex
+  align-items: center 
+  font-weight: 500
+  font-size: 14px
+  line-height: 24px
+  color: $color-dark3
+  border-radius: 9px
+  padding: 6px 24px
+  cursor: pointer
+
+.border
+  position: absolute
+  width: 100%
+  height: calc( 100% + 2px )
+  left: 0 
+  border-radius: 12px
+  border: 2px solid $color-dark3
+
+.highlight
+  position: absolute 
+  opacity: 1
+  width: 100% 
+  height: calc( 100% + 2px )
+  background: $color-yellow1
+  left: 0
+  border-radius: 12px 
+  z-index: -1
+
+    
+    
+
+

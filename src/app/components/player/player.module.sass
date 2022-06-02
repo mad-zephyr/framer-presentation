@@ -1,0 +1,109 @@
+@use '../../styles/' as *
+
+.player
+  position: relative
+  display: flex
+  width: 570px
+  height: 490px 
+  border-radius: 16px
+
+  &__fullscreen
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    border-radius: 0px
+    z-index: 2000
+
+    .screen, .controls
+      border: 0px solid $color-dark3
+      border-radius: 0px
+
+.live
+  position: absolute
+  top: 28px
+  left: 36px
+
+.wrapper
+  position: relative
+  width: 100%
+  border-radius: inherit
+ 
+.screen
+  width: 100%
+  height: 100%
+  object-fit: cover
+  border-radius: inherit
+  border: 3px solid $color-dark3
+
+.controls
+  position: absolute
+  display: flex
+  bottom: 0px
+  left: 0px
+  align-items: center
+  justify-content: space-between
+  padding: 16px
+  width: 100%
+  border: 3px solid $color-dark3
+  border-radius: 16px
+  height: 64px
+  background: linear-gradient(153.34deg, rgba(0, 0, 0, 0.3) -52.04%, rgba(0, 0, 0, 0) 100%)
+  backdrop-filter: blur(42px)
+  transition: 0.3s all ease
+
+  &__expanded
+    bottom: 24px
+    left: -24px 
+    width: calc( 100% + 48px )
+
+.left, .right
+  display: flex
+  align-items: center
+  column-gap: 16px
+
+.left
+  font-size: 14px
+  line-height: 16px
+
+.right
+  & > div
+    font-weight: 500
+    font-size: 14px
+    line-height: 24px 
+    display: flex
+    align-items: center
+    color: $color-dark3
+
+  svg
+    cursor: pointer
+
+.sticker
+  position: absolute
+  bottom: 0
+  display: flex
+  flex-direction: column
+  padding: 24px
+  width: 100%
+  border-radius: 0 0 16px 16px
+  background: linear-gradient(153.34deg, rgba(0, 0, 0, 0.3) -52.04%, rgba(0, 0, 0, 0) 100%)
+  border: 3px solid $color-dark3
+  backdrop-filter: blur(42px)
+  color: $color-yellow2
+
+.gamer
+  font-weight: 700
+  font-size: 14px
+  line-height: 16px
+
+.title
+  font-weight: 700
+  font-size: 24px
+  line-height: 32px
+
+.event
+  font-weight: 600
+  font-size: 16px
+  line-height: 24px
+

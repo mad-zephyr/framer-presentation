@@ -1,0 +1,80 @@
+@use '../../styles/' as *
+
+.section
+  position: fixed
+  display: flex
+  align-items: center
+  justify-content: center
+  top: 0
+  width: 100%
+  z-index: 1
+  display: flex
+  padding: 24px 26px
+
+.wrapper
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 100%
+
+.left
+  display: flex
+  align-items: center
+  
+
+.logo
+  font-family: 'Montserrat'
+  font-style: normal
+  font-weight: 700
+  font-size: 32px
+  line-height: 40px
+  display: flex
+  align-items: center
+  text-align: right
+  margin-right: 16px
+
+  a
+    color: $color-dark3
+    text-decoration: none
+
+.controls
+  display: flex
+  column-gap: 16px
+  min-width: 24px
+
+.search
+  width: 320px
+
+  input 
+    background: $color-yellow2
+
+.avatar
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+
+  img
+    width: 44px
+    height: 44px
+    border-radius: 50%
+    border: 3px solid $color-dark3
+
+  .counter
+    position: absolute
+    right: -6px
+    top: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    width: 20px
+    height: 20px
+    background: $color-dark3
+
+    font-family: 'Montserrat'
+    font-style: normal
+    font-weight: 600
+    font-size: 8px
+    line-height: 8px
+    color: $color_yellow1
