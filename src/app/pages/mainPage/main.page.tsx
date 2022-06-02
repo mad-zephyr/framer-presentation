@@ -3,31 +3,35 @@ import { BackgroundCube, Button, Player } from '../../components/components'
 
 import styles from './mainPage.module.sass'
 import ImgX from '../../assets/images/gemesX.jpeg'
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export const MainPage = (): JSX.Element => {
-  const motionVariants = {
+
+  const variantsAnimation = {
     hidden: {
-      opacity: 0
+      opacity: 0,
     },
     visible: {
       opacity: 1,
-      transition: {delay: 0.2, duration: 1.5}
+      transition: { delay: 0.2, duration: 1.5 }
     },
     exit: {
       opacity: 0,
       y: '-150px',
-      transition: {ease: 'easeIn', delay: 0.2, duration: 1.5}
+      transition: {
+        ease: 'easeInOut', delay: 0.2, duration: 1.5
+      }
     }
   }
 
-  return ( 
+
+  return (
     <motion.section
-      variants={motionVariants}
-      initial='hidden'
-      animate='visible'
-      exit='exit'
+      variants={variantsAnimation}
+      initial={'hidden'}
+      animate={'visible'}
+      exit={'exit'}
       key='main'
       className={styles.section}
     >
@@ -49,7 +53,7 @@ export const MainPage = (): JSX.Element => {
           event={'PUBG Mobile'}
         />
       </div>
-        <BackgroundCube />
-    </motion.section> 
+      <BackgroundCube />
+    </motion.section>
   )
 }

@@ -4,7 +4,7 @@ import { BackgroundCube, Card, Player, SegmentGroup, Slider, Segment } from '../
 import styles from './streamingPage.module.sass'
 import { motion, Reorder } from 'framer-motion';
 
-import { data } from '../../mock/mock' 
+import { data } from '../../mock/mock'
 import genrestService, { GenresProps } from '../../services/genres.service'
 import gameService, { GameProps, GamesList } from '../../services/games.service';
 
@@ -23,12 +23,12 @@ const initialGenres = {
   ]
 }
 
-export const StreamingPage  =  (): JSX.Element => {
+export const StreamingPage = (): JSX.Element => {
   const [isActiveSegment, setActiveSegmen] = useState<number>(0)
   const [genres, setGenres] = useState<GenresProps>(initialGenres)
   const [games, setGames] = useState<Array<GameProps>>()
   const [sliderGames, setSliderGames] = useState<GamesList>()
-  
+
   const getGenres = async () => {
     const recivedGenres = await genrestService.get()
     setGenres(recivedGenres)
@@ -50,47 +50,33 @@ export const StreamingPage  =  (): JSX.Element => {
     getMainGames()
   }, [])
 
-  useEffect(() => { 
+  useEffect(() => {
     getGames()
   }, [isActiveSegment, genres])
 
-  const motionVariants = {
+  const variantsAnimation = {
     hidden: {
-      opacity: 0
+      opacity: 0,
     },
     visible: {
       opacity: 1,
-      transition: {delay: 0.5, duration: 1.5}
+      transition: { delay: 0.2, duration: 1.5 }
     },
     exit: {
       opacity: 0,
-      transition: {ease: 'easeInOut', delay: 0.5, duration: 1.5}
-    } 
-  }
-
-  const sliderAnimation = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
+      y: '-150px',
       transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.2,
-        duration: 0.3
+        ease: 'easeInOut', delay: 0.2, duration: 1.5
       }
-    },
-    exit: {
-      opacity: 0
     }
   }
 
   return (
-    <motion.section 
-      variants={motionVariants}
-      initial='hidden'
-      animate='visible'
-      exit='exit'
+    <motion.section
+      variants={variantsAnimation}
+      initial={'hidden'}
+      animate={'visible'}
+      exit={'exit'}
       key='stream'
       className={styles.section}>
       {sliderGames && <Slider classname={styles.mainSlider}>
@@ -117,15 +103,11 @@ export const StreamingPage  =  (): JSX.Element => {
             setActive={setActiveSegmen}
             index={index}
           />)}</SegmentGroup>
-       </div>
-         <div className={styles.row}>
-          {games && <Reorder.Group
-            values={games}
-            axis='x'
-            onReorder={setGames}
-            className={styles.row__content}>
-            {games?.map(game => <Reorder.Item key={game.name} value={game.name}> <Card img={game.background_image} title={game.name} /></Reorder.Item> )}
-         </Reorder.Group>}
+        </div>
+        <div className={styles.row}>
+          <div className={styles.row__content}>
+            {games?.map(game => <Card key={game.id} img={game.background_image} title={game.name} />)}
+          </div>
         </div>
       </div>
       <BackgroundCube />

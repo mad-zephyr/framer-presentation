@@ -1,0 +1,68 @@
+@use '../../styles/' as *
+
+.section
+	display: flex
+	flex-grow: 1
+	height: auto
+	padding: 92px 0 120px
+
+.wrapper 
+	position: relative
+	display: flex
+	flex-direction: column
+	margin: 0 auto
+	width: 600px
+	padding: 0 24px
+
+	&__title
+		font-style: normal
+		font-weight: 800
+		font-size: 32px
+		line-height: 40px
+		margin-top: 24px
+
+.textBlock 
+	display: flex
+	width: 100%
+	flex-direction: column
+	margin-bottom: 24px
+
+.content
+	display: flex
+	padding: 16px
+	width: 100%
+	align-items: center
+	justify-content: space-between
+
+.title
+	font-style: normal
+	font-weight: 700
+	font-size: 20px
+	line-height: 32px
+
+.controls
+	display: flex
+	align-items: center
+	column-gap: 24px
+
+	&__btn
+		cursor: pointer
+
+	&__drag
+		svg
+			&::active
+				pointer: grab
+
+.textarea
+	border-radius: 16px
+	background: $color-yellow3 
+	border: 3px solid $color-dark3 
+	font-style: normal
+	font-weight: 500
+	font-size: 20px
+	line-height: 32px
+	color:  $color-dark3 
+	padding: 16px 
+
+	&:active, &:focused
+		outline: 6px $color-yellow2 

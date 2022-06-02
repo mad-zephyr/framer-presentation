@@ -2,7 +2,8 @@ import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Footer, Header } from './app/components/components';
 import cn from 'classnames'
-import { MainPage, StreamingPage } from './app/pages/component';
+import { MainPage, ReorderPage, StreamingPage } from './app/pages/component';
+
 
 import styles from './app.module.sass'
 import { AnimatePresence } from 'framer-motion';
@@ -12,12 +13,13 @@ function App() {
   return (
     <div className={cn('App', styles.app)}>
       <Header />
-      {/* <AnimatePresence exitBeforeEnter> */}
-        <Routes location={location} key={location.key}> 
+      <AnimatePresence exitBeforeEnter>
+        <Routes location={location} key={location.key} >
           <Route path="/" element={<MainPage />} />
-          <Route path="/streaming" element={<StreamingPage />} /> 
+          <Route path="/streaming" element={<StreamingPage />} />
+          <Route path="/reorder" element={<ReorderPage />} />
         </Routes>
-      {/* </AnimatePresence> */}
+      </AnimatePresence>
       <Footer />
     </div>
   )

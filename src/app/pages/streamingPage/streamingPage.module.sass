@@ -2,12 +2,12 @@
 
 .section
   display: grid
+  width: 100%
   grid-template-columns: [columnStart] repeat(3, 33%) [columnEnd]
-  grid-template-rows: [rowStart] 520px 72px 240px [rowEnd] 
+  grid-template-rows: [rowStart] 520px 72px 400px [rowEnd] 
   position: relative 
-  padding: 92px 0 0
-  min-height: 100vh
-  height: auto
+  padding: 92px 0 0 
+  overflow-x: hidden
 
 .wrapper
   grid-column: columnStart / columnEnd

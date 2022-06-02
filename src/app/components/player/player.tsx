@@ -1,4 +1,4 @@
-import React, { useState } from 'react' 
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import cn from 'classnames'
 
@@ -13,12 +13,16 @@ import image from '../../assets/images/gemesX.jpeg'
 
 import styles from './player.module.sass'
 import { Chip } from '../components'
+import { setWindowOverflow } from './../../helpers/setWindowOverflow';
 
-export const Player: React.FC<PlayerProps> = ({ imgURL=image, controlExpanded = true, controls=false, gamer, title, event, classname, live }): JSX.Element => {
+export const Player: React.FC<PlayerProps> = ({ imgURL = image, controlExpanded = true, controls = false, gamer, title, event, classname, live }): JSX.Element => {
   const [isControlExpanded, setIsControlExpanded] = useState<boolean>(controlExpanded)
   const [isFullcreen, setFullcreen] = useState<boolean>(false)
   const handlerExpand = () => {
-    setFullcreen(prevState => !prevState)
+    setFullcreen(prevState => {
+      setWindowOverflow(!prevState)
+      return !prevState
+    })
     setIsControlExpanded(prevState => !prevState)
   }
 
@@ -26,8 +30,8 @@ export const Player: React.FC<PlayerProps> = ({ imgURL=image, controlExpanded = 
     <motion.div
       layout
       initial={styles.player}
-      animate={{ y: 0, x: 0}}
-      transition={{ ease: "easeInOut", duration: 1 }}
+      animate={{ x: 0, y: 0 }}
+      transition={{ ease: 'easeInOut', duration: 1 }}
       className={cn(classname, styles.player, {
         [styles.player__fullscreen]: isFullcreen
       })}
@@ -35,7 +39,7 @@ export const Player: React.FC<PlayerProps> = ({ imgURL=image, controlExpanded = 
       <div className={styles.wrapper}>
         <div className={styles.live}><Chip>Live</Chip></div>
         <img className={styles.screen} src={imgURL} alt="" />
-        {controls && <div className={cn(styles.controls, { [styles.controls__expanded]: isControlExpanded })}> 
+        {controls && <div className={cn(styles.controls, { [styles.controls__expanded]: isControlExpanded })}>
           <div className={styles.left}>
             <PlayIcon />
             <VolIcon />
@@ -43,12 +47,12 @@ export const Player: React.FC<PlayerProps> = ({ imgURL=image, controlExpanded = 
           </div>
           <div className={styles.center}></div>
           <div className={styles.right}>
-            <Chip><EyeIcon/>4.1k viewers</Chip>
+            <Chip><EyeIcon />4.1k viewers</Chip>
             <SettingsIcon />
-            <FulscreenIcon onClick={handlerExpand}/>
+            <FulscreenIcon onClick={handlerExpand} />
           </div>
         </div>}
-       {!controls && <div className={styles.sticker}>
+        {!controls && <div className={styles.sticker}>
           <div className={styles.gamer}>{gamer}</div>
           <div className={styles.title}>{title}</div>
           <div className={styles.event}>{event}</div>
